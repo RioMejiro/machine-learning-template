@@ -1,0 +1,15 @@
+services:
+  app:
+    build: .
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]
+    shm_size: '16gb'
+    volumes:
+      - ./:/project
+    working_dir: /project
+    ports:
+      - "8888:8888"
+    tty: true
